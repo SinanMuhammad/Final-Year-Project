@@ -457,6 +457,9 @@
 
         function sendData(event) {
             event.preventDefault()
+            if(!document.getElementById('danger').hasAttribute('hidden')) {
+                document.getElementById('danger').setAttribute('hidden')
+            }
 
             data = {
                 name: document.getElementById('name').value,
