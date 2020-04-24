@@ -15,7 +15,7 @@ module.exports = db.sequelize.define(
         seo: {
             type: Sequelize.BOOLEAN
         },
-        ssm: {
+        smm: {
             type: Sequelize.BOOLEAN
         },
         ppc: {
@@ -52,5 +52,7 @@ module.exports = db.sequelize.define(
             type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
         }
+    }, {
+        timestamps: false
     }
 )

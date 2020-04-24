@@ -9,6 +9,7 @@ const router = express.Router()
 router.use(cors())
 
 router.post('/register', (request, response) => {
+    
     const today = new Date()
 
     const customer = {
@@ -20,10 +21,10 @@ router.post('/register', (request, response) => {
     const service = {
         email: request.body.email,
         seo: request.body.seo,
-        ssm: request.body.ssm,
+        smm: request.body.smm,
         ppc: request.body.ppc,
         sem: request.body.sem,
-        email_marketing: request.body.email,
+        email_marketing: request.body.email_marketing,
         web_dev: request.body.web_dev,
         branding: request.body.branding,
         seller_support: request.body.seller_support,
@@ -61,18 +62,18 @@ router.post('/register', (request, response) => {
                                         response.sendStatus(200).send("Message sent")
                                     )
                                     .catch(error => {
-                                        response.send('error: Couldn\'t send message' + error )
+                                        response.send('error: Couldn\'t send message ' + error )
                                     })
                                 } else {
                                     response.sendStatus(200).send("Message sent")
                                 }
                             })
                             .catch(error => {
-                                response.send('error: Couldn\'t send message' + error )
+                                response.send('error: Couldn\'t send message ' + error )
                             })    
                     )
                     .catch(error => {
-                        response.send('error: Couldn\'t send message' + error )
+                        response.send('error: Couldn\'t send message ' + error )
                     })
                 
             } else {
@@ -84,19 +85,19 @@ router.post('/register', (request, response) => {
                                 response.sendStatus(200).send("Message sent")
                             )
                             .catch(error => {
-                                response.send('error: Couldn\'t send message' + error )
+                                response.send('error: Couldn\'t send message ' + error )
                             })
                         } else {
                             response.sendStatus(200).send("Message sent")
                         }
                     })
                     .catch(error => {
-                        response.send('error: Couldn\'t send message' + error )
+                        response.send('error: Couldn\'t send message ' + error )
                     })
             }
         })
         .catch(error => {
-            response.send('error: Couldn\'t send message' + error )
+            response.send('error: Couldn\'t send message ' + error )
         })
 })
 

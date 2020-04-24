@@ -6,6 +6,8 @@
     <title>Folks Analytica</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -350,13 +352,13 @@
                     marketing company.</p>
             </div>
             <div class="contactForm">
-                <form>
+                <form onsubmit="sendData(event)">
                     <div class="row100">
                         <div class="inputBx50">
-                            <input type="text" name="fullname" placeholder="Full Name" Required>
+                            <input type="text" id="name" name="name" placeholder="Full Name" Required>
                         </div>
                         <div class="inputBx50">
-                            <input type="text" name="email" placeholder="Email Address" Required>
+                            <input type="email" id="email" name="email" placeholder="Email Address" Required>
                         </div>
                     </div>
                     <div class="asap">
@@ -364,51 +366,51 @@
                         <div class="check">
 
                             <label class="container">SMM
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="smm" name="smm">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">SEO
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="seo" name="seo">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">PPC
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="ppc" name="ppc">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">SEM
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="sem" name="sem">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">Email Marketing
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="email_marketing" name="email_marketing">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">Web/App Development
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="web_dev" name="web_dev">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container"> Branding
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="branding" name="branding">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">Seller Support
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="seller_support" name="seller_support">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">Remarketing
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="remarketing" name="remarketing">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">E Commerce Services
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="e_commerce" name="e_commerce">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">Content Marketing
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="content_marketing" name="content_marketing">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">Analytics & Monitoring
-                                <input type="checkbox" Required>
+                                <input type="checkbox" id="analytics" name="analytics">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -417,15 +419,21 @@
 
                     <div class="row100">
                         <div class="inputBx100">
-                            <textarea placeholder="Message"></textarea>
+                            <textarea placeholder="Message" id="message" name="message"></textarea>
                         </div>
                     </div>
                     <div class="row100">
                         <div class="inputBx100">
-                            <input type="submit" value="submit">
+                            <input type="submit" value="submit" id="submit" name="submit">
                         </div>
                     </div>
                 </form>
+            </div>
+            <div id="success" class="alert alert-success" role="alert" hidden>
+                Message Delivered!! We will get in touch with you soon.
+            </div>
+            <div id="danger" class="alert alert-danger" role="alert" hidden>
+                Couldn't send message. Try again.
             </div>
             <div class="sci">
                 <ul>
@@ -438,11 +446,44 @@
             <p class="copyright">Design & Developed By Team <span>Folks Analytica</span></p>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript">
         window.addEventListener("scroll", function () {
             var header = document.querySelector("header");
             header.classList.toggle("sticky", window.scrollY > 0);
         })
+
+        function sendData(event) {
+            event.preventDefault()
+
+            data = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                seo: document.getElementById('seo').checked,
+                smm: document.getElementById('smm').checked,
+                ppc: document.getElementById('ppc').checked,
+                sem: document.getElementById('sem').checked,
+                email_marketing: document.getElementById('email_marketing').checked,
+                web_dev: document.getElementById('web_dev').checked,
+                branding: document.getElementById('branding').checked,
+                seller_support: document.getElementById('seller_support').checked,
+                remarketing: document.getElementById('remarketing').checked,
+                e_commerce: document.getElementById('e_commerce').checked,
+                content_marketing: document.getElementById('content_marketing').checked,
+                analytics: document.getElementById('analytics').checked,
+                message: document.getElementById('message').value === "" ? null : document.getElementById('message').value
+            }   
+
+            axios.post('http://localhost:5000/services/register', data)
+            .then(function (response) {
+                document.getElementById('success').removeAttribute('hidden') 
+            })
+            .catch(function (error) {
+                document.getElementById('danger').removeAttribute('hidden')
+            });
+        }
     </script>
 </body>
 
