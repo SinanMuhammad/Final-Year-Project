@@ -123,7 +123,7 @@ header.sticky ul li ul
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: url(final.jpg);
+    background: url(../images/final.jpg);
     background-position: center;
     background-size: cover;
     display: flex;
